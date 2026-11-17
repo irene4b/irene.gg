@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Irene's projects, CV and skills.">
+<meta name="theme-color" content="#f8f5ee">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<title>Irene · Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root { color-scheme: light; background: #f8f5ee; color: #35312e; font-family: 'Fraunces', Georgia, serif; interpolate-size: allow-keywords; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100svh; display: grid; align-items: center; padding: clamp(30px, 7vw, 100px); }
+main { width: 100%; max-width: 640px; margin: 0 auto; padding: 40px 0 70px; }
+h1 { margin: 0 0 24px; font-size: clamp(38px, 6vw, 54px); font-weight: 400; line-height: 1.15; letter-spacing: -.045em; }
+.intro { margin: 0 0 48px; font-size: clamp(20px, 2.6vw, 24px); line-height: 1.6; letter-spacing: -.02em; }
+a { color: #74587d; text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: .16em; text-decoration-color: #b4a1ba; }
+a:hover { color: #4e345a; text-decoration-color: currentColor; }
+a:focus-visible, summary:focus-visible { outline: 2px solid #74587d; outline-offset: 3px; border-radius: 2px; }
+::selection { background: #e6dceb; color: #35312e; }
+
+/* Background shapes: drift slowly, and shift with the cursor via --mx/--my */
+.shapes { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.shape { position: absolute; transform: translate3d(calc(var(--mx, 0) * var(--d) * -1px), calc(var(--my, 0) * var(--d) * -1px), 0); }
+.shape > * { display: block; animation: drift var(--t, 20s) ease-in-out infinite alternate; }
+@keyframes drift { to { transform: translate(var(--dx, 18px), var(--dy, -22px)) rotate(var(--r, 10deg)); } }
+.s1 { --d: 30; top: -90px; left: -90px; }
+.s1 > * { --t: 26s; --dx: 30px; --dy: 24px; width: 360px; height: 360px; border-radius: 50%; background: #ece3ef; }
+.s2 { --d: 50; right: 7%; bottom: -60px; }
+.s2 > * { --t: 22s; --dx: -16px; --dy: -26px; --r: -4deg; width: 220px; height: 300px; border-radius: 999px 999px 0 0; background: #d9dec9; }
+.s3 { --d: 90; right: 16%; top: 14%; }
+.s3 > * { --t: 14s; --dx: -22px; --dy: 30px; width: 64px; height: 64px; border-radius: 50%; background: #ecc2a6; }
+.s4 { --d: 70; left: 7%; bottom: 16%; }
+.s4 > * { --t: 18s; --r: -14deg; width: 150px; }
+.s5 { --d: 110; left: max(20px, calc(50% - 440px)); top: 22%; }
+.s5 > * { --t: 12s; --r: 90deg; --dx: 10px; width: 30px; }
+.s6 { --d: 60; right: -50px; top: 44%; }
+.s6 > * { --t: 24s; --r: -18deg; --dx: -14px; width: 120px; height: 240px; border-radius: 120px 0 0 120px; background: #ece3ef; }
+.s7 { --d: 80; left: 64%; bottom: 9%; }
+.s7 > * { --t: 16s; --r: 24deg; width: 110px; height: 40px; border-radius: 999px; background: #f0e2cc; transform-origin: center; }
+@media (prefers-reduced-motion: reduce) { .shape { transform: none; } .shape > * { animation: none; } }
+@media (max-width: 600px) { .s1 > * { width: 220px; height: 220px; } .s2 > * { width: 140px; height: 190px; } .s4, .s6 { display: none; } }
+
+.window { background: #fcfaf6; border: 1px solid #e4ddd0; border-radius: 14px; box-shadow: 0 30px 60px -40px rgba(53, 49, 46, .35); overflow: hidden; }
+details + details { border-top: 1px solid #ebe5da; }
+summary { display: flex; align-items: baseline; gap: 12px; padding: 20px 24px; cursor: pointer; list-style: none; font-size: 21px; letter-spacing: -.02em; }
+summary::-webkit-details-marker { display: none; }
+summary:hover { color: #74587d; }
+summary::after { content: '+'; width: 14px; margin-left: auto; text-align: center; color: #8a8178; transition: transform .3s ease; }
+details[open] summary::after { transform: rotate(45deg); }
+details::details-content { block-size: 0; overflow: hidden; transition: block-size .35s ease, content-visibility .35s allow-discrete; }
+details[open]::details-content { block-size: auto; }
+@media (prefers-reduced-motion: reduce) { details::details-content, summary::after { transition: none; } }
+.body { padding: 0 24px 26px; font-size: 17px; line-height: 1.65; }
+.body p { margin: 0 0 14px; }
+.body p:last-child { margin-bottom: 0; }
+.muted { color: #8a8178; }
+
+.project + .project { margin-top: 26px; padding-top: 24px; border-top: 1px solid #ebe5da; }
+.shot { display: block; width: 100%; height: auto; margin-bottom: 16px; border: 1px solid #ebe5da; border-radius: 8px; }
+.project h2 { display: flex; align-items: baseline; gap: 12px; margin: 0 0 8px; font-size: 19px; font-weight: 400; letter-spacing: -.02em; }
+.project h2 span { margin-left: auto; font-size: 15px; color: #8a8178; }
+
+.rows { margin: 0; padding: 0; list-style: none; }
+.rows li { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding: 10px 0; }
+.rows li + li { border-top: 1px solid #f0ebe2; }
+.rows .when { color: #8a8178; font-variant-numeric: tabular-nums; }
+.rows .note { display: block; color: #6f675f; }
+.sub { margin: 22px 0 4px; font-size: 15px; font-style: italic; color: #8a8178; }
+
+footer { margin-top: 40px; display: flex; justify-content: space-between; gap: 16px; font-size: 17px; }
+@media (max-width: 480px) {
+  main { padding: 20px 0; }
+  summary { padding: 18px; font-size: 19px; }
+  .body { padding: 0 18px 22px; font-size: 16px; }
+  .rows li { grid-template-columns: 1fr; gap: 2px; }
+}
+</style>
+<!-- Font: Fraunces by Undercase Type (Google Fonts), licensed under the SIL Open Font License 1.1. No cookies; one small script for the background. -->
+</head>
+<body>
+<div class="shapes" aria-hidden="true">
+  <div class="shape s1"><span></span></div>
+  <div class="shape s2"><span></span></div>
+  <div class="shape s3"><span></span></div>
+  <div class="shape s4"><svg viewBox="0 0 150 40"><path d="M4 20c12-16 24-16 36 0s24 16 36 0 24-16 36 0 24 16 34 0" fill="none" stroke="#a48cab" stroke-width="3" stroke-linecap="round"/></svg></div>
+  <div class="shape s5"><svg viewBox="0 0 30 30"><path d="M15 0c1.5 9 5.5 13.5 15 15-9.5 1.5-13.5 6-15 15-1.5-9-5.5-13.5-15-15 9.5-1.5 13.5-6 15-15z" fill="#74587d"/></svg></div>
+  <div class="shape s6"><span></span></div>
+  <div class="shape s7"><span></span></div>
+</div>
+<main>
+<h1>Portfolio</h1>
+<p class="intro">I'm a co-founder, product designer and software engineer living in Barcelona. Right now I'm building <a href="https://the-schnitz.com">The Schnitz</a>, freelancing, and learning on Augment.</p>
+
+<div class="window">
+  <details name="portfolio">
+    <summary>Projects</summary>
+    <div class="body">
+      <div class="project">
+        <img class="shot" src="images/the-schnitz.jpg" width="1200" height="633" loading="lazy" alt="The Schnitz homepage, with the app's Explore Barcelona screen on a phone">
+        <h2><a href="https://the-schnitz.com">The Schnitz</a> <span>now</span></h2>
+        <p>A self-guided city tour app. Pick a topic, like street art or good coffee, and it plans a walk with a story at every stop. You can also play it as a scavenger hunt, where the streets around you hold the answers to the riddles.</p>
+        <p>I designed it myself, from the first sketches and the brand to every screen in the app, and I build it too.</p>
+        <p class="muted">Co-founder and CTO. Design and engineering.</p>
+      </div>
+      <div class="project">
+        <img class="shot" src="images/prepi.jpg" width="1200" height="667" loading="lazy" alt="Prepi homepage, with an illustration of students solving maths problems">
+        <h2><a href="https://prepi.ro">Prepi</a> <span>2018 – 2021</span></h2>
+        <p>Maths and BAC prep for high school students in Romania. While I was there it grew to more than 21,000 students. Today's Prepi is a relaunch led by one of my co-founders.</p>
+        <p>I worked closely with a freelance designer and turned their designs into the product, building the platform and writing the custom CSS to match every detail.</p>
+        <p class="muted">Co-founder and CTO. Engineering.</p>
+      </div>
+    </div>
+  </details>
+
+  <details name="portfolio">
+    <summary>CV</summary>
+    <div class="body">
+      <ul class="rows">
+        <li><span class="when">Now</span><span>Co-founder and CTO, The Schnitz<span class="note">Designing the product and brand myself and building the app, from the first sketches to early access.</span></span></li>
+        <li><span class="when">2024 – now</span><span>Frontend developer, Qonto<span class="note">Freelance. Working on local payments and transfers in Ember and React, and helping move the app from Ember to React.</span></span></li>
+        <li><span class="when">2022 – 2023</span><span>Frontend engineer, Revolut<span class="note">Built features for Revolut People, Revolut's HR platform, in React, and stayed on the project through to its launch.</span></span></li>
+        <li><span class="when">2021 – 2022</span><span>Lead frontend developer, Upgrade Education<span class="note">Built an online learning platform from scratch in React, TypeScript and Node.js, which reached 400+ paying users. Led a team of six developers, testers and designers, and cut onboarding from a week to a day.</span></span></li>
+        <li><span class="when">2018 – 2021</span><span>Co-founder and CTO, Prepi<span class="note">Built the platform in JavaScript, Node.js and Express, working with a freelance designer to bring their designs to life in code. Grew it to 21,000+ students.</span></span></li>
+        <li><span class="when">2020</span><span>Online instructor, iD Tech<span class="note">Taught HTML, CSS and JavaScript to 42 students, aged seven and up, at the first online iD Tech summer camp.</span></span></li>
+        <li><span class="when">2019 – 2020</span><span>Admission processor, Minerva Schools at KGI<span class="note">Internship with the admissions team, processing student applications.</span></span></li>
+        <li><span class="when">2017 – 2018</span><span>Freelance full-stack engineer, Upwork<span class="note">Delivered 15+ client projects, from custom WordPress sites to web apps in TypeScript. Earned Rising Talent status with a 4.95/5 rating, and cut a pharmaceutical client's delivery time by 30% by automating their manual work.</span></span></li>
+      </ul>
+      <p class="sub">Studies</p>
+      <ul class="rows">
+        <li><span class="when">2026 – 2027</span><span>MBA, Augment</span></li>
+        <li><span class="when">Two years</span><span>Undergraduate, Minerva Schools at KGI</span></li>
+      </ul>
+    </div>
+  </details>
+
+  <details name="portfolio">
+    <summary>Skills</summary>
+    <div class="body">
+      <ul class="rows">
+        <li><span class="when">Code</span><span>React, TypeScript, Ember, React Native, Expo, Node.js, Express, HTML5, CSS, Sass, PHP, WordPress</span></li>
+        <li><span class="when">AI</span><span>Claude, Codex, Cursor, Orca, MCP</span></li>
+        <li><span class="when">Design</span><span>Figma, Photoshop, Illustrator, Final Cut Pro</span></li>
+      </ul>
+    </div>
+  </details>
+</div>
+
+<footer>
+  <a href="/">Home</a>
+  <a href="mailto:hi@irene.gg">hi@irene.gg</a>
+</footer>
+</main>
+<script>
+// Ease the background shapes toward the cursor; skipped for reduced motion and touch screens.
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches && matchMedia('(pointer: fine)').matches) {
+  const root = document.documentElement;
+  let tx = 0, ty = 0, x = 0, y = 0, running = false;
+  const tick = () => {
+    x += (tx - x) * .05;
+    y += (ty - y) * .05;
+    root.style.setProperty('--mx', x.toFixed(4));
+    root.style.setProperty('--my', y.toFixed(4));
+    running = Math.abs(tx - x) + Math.abs(ty - y) > .001;
+    if (running) requestAnimationFrame(tick);
+  };
+  addEventListener('pointermove', (e) => {
+    tx = e.clientX / innerWidth - .5;
+    ty = e.clientY / innerHeight - .5;
+    if (!running) { running = true; requestAnimationFrame(tick); }
+  }, { passive: true });
+}
+</script>
+</body>
+</html>
